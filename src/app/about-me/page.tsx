@@ -6,20 +6,22 @@ import {
     CardTitle,
   } from "@/components/ui/card";
 import Image from "next/image";
-import Chip from "@/app/assets/chip_rat.jpg";
+import {Separator} from "@/components/ui/separator";
+import Typing from "@/app/assets/rat_typing.png"
 
 export default function Home() {
     return (
-      <div>
+      <div className="grid justify-center">
         aaaaaaaa
-        <Card>
+        <Card className="w-[800px] grid justify-center">
             <CardHeader>
                 <CardTitle>{"Hello I'm Riley"}</CardTitle>
                 <CardDescription>
                     rats
                 </CardDescription>
             </CardHeader>
-            <Image width={500} height={500} src={Chip} alt="chip rat chip rat chip rat chip rat"></Image>
+            <Separator className="my-4"/>
+            <Image width={200} height={200} src={Typing} alt="rat typing"></Image>
             <CardContent>
                 <div>
                     <p className="font-bold">Name:</p> Riley

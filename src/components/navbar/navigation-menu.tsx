@@ -6,14 +6,17 @@ import {
   } from "@/components/ui/navigation-menu";
 
 import Link from "next/link";
+import { ModeToggle } from "../mode-toggle";
 
 export function NavigationBar() {
     return(
     <NavigationMenu className="list-none h-16">
         <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-            Home
-            </NavigationMenuLink>
+            <Link href="/" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Home
+                </NavigationMenuLink>
+            </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
             <Link href="/quiz" legacyBehavior passHref>
@@ -29,6 +32,7 @@ export function NavigationBar() {
                 </NavigationMenuLink>
             </Link>
         </NavigationMenuItem>
+        <ModeToggle></ModeToggle>
     </NavigationMenu>
     )
 }
