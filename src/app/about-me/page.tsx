@@ -5,8 +5,8 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card";
-import Image from "next/image"
-import Chip from "@/app/assets/chip_rat.jpg"
+import Image from "next/image";
+import Chip from "@/app/assets/chip_rat.jpg";
 
 export default function Home() {
     return (
