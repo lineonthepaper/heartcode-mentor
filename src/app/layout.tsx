@@ -3,8 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { NavigationBar } from "@/components/navbar/navigation-menu"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
