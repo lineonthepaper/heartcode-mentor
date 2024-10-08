@@ -7,7 +7,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 
 export default function Home() {
-  var checkbox = false
   return (
     <div className="grid justify-center">
       <Card className="w-[1000px] grid justify-center">
@@ -17,7 +16,7 @@ export default function Home() {
         </CardHeader>
         <Separator className="my-4"/>
         <CardContent>
-          <p>don't abuse drugs kids</p>
+          <p>{"don't abuse drugs kids"}</p>
           <div className="flex space-x-2">
 
 
