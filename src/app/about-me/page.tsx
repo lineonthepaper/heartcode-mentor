@@ -14,7 +14,7 @@ export default function Home() {
         aaaaaaaa
         <Card>
             <CardHeader>
-                <CardTitle>Hello I'm Riley</CardTitle>
+                <CardTitle>{"Hello I'm Riley"}</CardTitle>
                 <CardDescription>
                     rats
                 </CardDescription>
