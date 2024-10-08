@@ -1,6 +1,6 @@
 "use client"
 
-import { CardHeader, Card, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { CardHeader, Card, CardTitle, CardDescription } from "@/components/ui/card";
 import {Separator} from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import Drugs from "@/app/assets/drugs.jpeg";
