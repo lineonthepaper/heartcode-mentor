@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+import { insertOneUser } from "@/app/server/user"
+
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -15,6 +17,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useToast } from "@/hooks/use-toast"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
  
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -33,8 +37,12 @@ const formSchema = z.object({
 let username:string;
 let q1:number;
 let q2:string;
+let q1Correct:boolean;
+let q2Correct:boolean;
 
-export default function Home() {
+export default function Quiz() {
+    const { toast } = useToast();
+
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
@@ -43,13 +51,18 @@ export default function Home() {
       },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    async function onSubmit(values: z.infer<typeof formSchema>) {
       // Do something with the form values.
       // ✅ This will be type-safe and validated.
       console.log(values.username)
       username = values.username;
       q1 = values.q1;
       q2 = values.q2;
+      q1Correct = q1 === 3122;
+      q2Correct = q2 === "meth";
+
+      await insertOneUser(values.username, values.username == "rats", q1Correct, q2Correct)
+
     }
     
     return (
@@ -92,14 +105,29 @@ export default function Home() {
               name="q2"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Question 2 <br/> What is the most commonly abused drug in Singapore?</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Answer here" {...field} />
-                  </FormControl>
-                  <FormDescription>
+                  <FormLabel>Question 2 <br/> What is the most abused drug in Singapore?</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+
+                    <FormControl>
+                      {/* <Input placeholder="Answer here" {...field} /> */}
+                      <SelectTrigger>
+                        <SelectValue placeholder="placeholder"/>
+                      </SelectTrigger>
+                    </FormControl>
                     
-                  </FormDescription>
+                    <SelectContent>
+                      <SelectItem value="meth">Methamphetamine</SelectItem>
+                      <SelectItem value="marijuana">Marijuana</SelectItem>
+                      <SelectItem value="heroin">Heroin</SelectItem>
+                      <SelectItem value="cocaine">Cocaine</SelectItem>
+                    </SelectContent>
+                  
+                  </Select>
+                  {/* <FormDescription>
+                    aaaa
+                  </FormDescription> */}
                   <FormMessage />
+
                 </FormItem>
               )} />
             <Button type="submit">Submit</Button>
@@ -122,7 +150,7 @@ export default function Home() {
         }
         {
           q2 == undefined || q2 == ""
-          ? <p></p> : q2.toLowerCase() == "meth" || q2.toLowerCase() == "methamphetamine"
+          ? <p></p> : q2.toLowerCase() == "meth"
           ? <p>Question 2: Correct!</p>
           : <p className="italic">Question 2: Wrong, it is methamphetamine.</p>
         }
