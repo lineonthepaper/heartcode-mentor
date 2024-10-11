@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useToast } from "@/hooks/use-toast"
+// import { useToast } from "@/hooks/use-toast"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
  
 const formSchema = z.object({
@@ -41,7 +41,7 @@ let q1Correct:boolean;
 let q2Correct:boolean;
 
 export default function Quiz() {
-    const { toast } = useToast();
+    // const { toast } = useToast();
 
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
