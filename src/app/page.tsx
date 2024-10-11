@@ -6,8 +6,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Drugs from "@/app/assets/drugs.jpeg";
 import Rat_Meds from "@/app/assets/rat_meds.jpg"
 import Image from "next/image";
+import { FlipWords } from "@/components/ui/flip-words";
 
 export default function Home() {
+  const words: string[] = ["responsibly", "intelligently", "properly", "correctly", "using your brain", "without abusing"];
   return (
     <div>
     <div className="flex flex-col justify-center min-h-dvh text-center items-center gap-y-5">
@@ -35,7 +37,7 @@ export default function Home() {
               <Image src={Drugs} height={200} alt="Drugs"/>
             </CardDescription>
             <Separator/>
-            <CardTitle>Use drugs responsibly, like him</CardTitle>
+            <CardTitle>Use drugs <FlipWords words={words}/>, like him</CardTitle>
             
             <CardDescription className="grid place-items-center">
               <Image src={Rat_Meds} height={300} alt="Rat using drugs responsibly"/>
