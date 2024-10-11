@@ -32,7 +32,7 @@ function genId() {
   return count.toString()
 }
 
-type ActionType = typeof actionTypes
+type ActionType = InstanceType<typeof actionTypes>
 
 type Action =
   | {
