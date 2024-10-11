@@ -111,7 +111,7 @@ export default function Quiz() {
                     <FormControl>
                       {/* <Input placeholder="Answer here" {...field} /> */}
                       <SelectTrigger>
-                        <SelectValue placeholder="placeholder"/>
+                        <SelectValue placeholder="Dropdown"/>
                       </SelectTrigger>
                     </FormControl>
                     
